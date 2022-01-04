@@ -1,0 +1,7 @@
+{
+  "name": "geststock",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nouveau</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" color="primary">
+    <ion-segment-button value="Nouveau" layout="icon-start">
+      <ion-label>Nouveau</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Entrée" layout="icon-start">
+      <ion-label>Entrée</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Sortie" layout="icon-start">
+      <ion-label>Sortie</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+<ion-list *ngIf="active == 'Nouveau'">
+  <form [formGroup]="nouveauform">
+    <ion-item>
+      <ion-label position="floating">Nom</ion-label>
+      <ion-input type="text" formControlName="Nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Categorie</ion-label>
+      <ion-select formControlName="Categorie">
+        <ion-select-option>Hygiene</ion-select-option>
+        <ion-select-option>Nutrition</ion-select-option>
+        <ion-select-option>Autre</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Prix</ion-label>
+      <ion-input type="number" formControlName="Prix"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Quantité initial</ion-label>
+      <ion-input type="number" formControlName="Qte"></ion-input>
+    </ion-item>
+    <ion-button color="success" expand="block" (click)="enregistrenewstock()" [disabled]="!nouveauform.valid">
+      Enregistrer
+    </ion-button>
+  </form>
+</ion-list>
+<ion-list *ngIf="active == 'Entrée'">
+  <form [formGroup]="entrestock">
+    <ion-item>
+      <ion-label>Produit</ion-label>
+      <ion-input type="text" formControlName="Produit" (click)="selecttypeentre()" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Quantité</ion-label>
+      <ion-input type="number" formControlName="Qte"></ion-input>
+    </ion-item>
+    <ion-button color="success" expand="block" (click)="updatestock('entre')" [disabled]="!entrestock.valid">
+      Enregistrer
+    </ion-button>
+  </form>
+</ion-list>
+<ion-list *ngIf="active == 'Sortie'">
+  <form [formGroup]="sortiestock">
+    <ion-item>
+      <ion-label>Produit</ion-label>
+      <ion-input type="text" formControlName="Produit" (click)="selecttypesortie()" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Quantité</ion-label>
+      <ion-input type="number" formControlName="Qte"></ion-input>
+    </ion-item>
+    <ion-button color="success" expand="block" (click)="updatestock('sortie')" [disabled]="!sortiestock.valid">
+      Enregistrer
+    </ion-button>
+  </form>
+</ion-list>
+</ion-content>

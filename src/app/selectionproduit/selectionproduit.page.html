@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Liste Produit</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Fermer</ion-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-searchbar  placeholder="Recherche" animated (ionInput)="SearchinputChanged($event.target.value)"></ion-searchbar>
+<ion-list>
+  <ion-radio-group value="produit">
+    <ion-item *ngFor="let data of list_produit" (click)="savedata(data)">
+      <ion-radio slot="start" value="{{data.Nom}}"></ion-radio>
+      <ion-label>
+        <h2>{{data.Nom}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+</ion-content>

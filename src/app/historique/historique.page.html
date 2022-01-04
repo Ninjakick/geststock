@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historique</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-segment (ionChange)="segmentChanged($event)" color="primary">
+  <ion-segment-button value="Entrée" layout="icon-start">
+    <ion-label>Entrée</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="Sortie" layout="icon-start">
+    <ion-label>Sortie</ion-label>
+  </ion-segment-button>
+</ion-segment>
+<ion-list *ngIf="active == 'Entrée'">
+  <ion-searchbar  placeholder="Recherche" animated showCancelButton="focus" (ionInput)="SearchinputChangedentree($event.target.value)"></ion-searchbar>
+  <ion-item  *ngFor="let data of donneentree">
+    <ion-label>
+      <h2>{{data.Nom}}</h2>
+      <h3>{{data.Qte}}</h3>
+      <small>{{data.Date_transaction}}</small>
+    </ion-label>
+  </ion-item>
+</ion-list>
+<ion-list *ngIf="active == 'Sortie'">
+  <ion-searchbar  placeholder="Recherche" animated showCancelButton="focus" (ionInput)="SearchinputChangedsortie($event.target.value)"></ion-searchbar>
+  <ion-item  *ngFor="let data of donnesortie">
+    <ion-label>
+      <h2>{{data.Nom}}</h2>
+      <h3>{{data.Qte}}</h3>
+      <small>{{data.Date_transaction}}</small>
+    </ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>

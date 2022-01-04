@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Etat stock</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-searchbar  placeholder="Recherche" animated showCancelButton="focus" (ionInput)="SearchinputChangedentree($event.target.value)"></ion-searchbar>
+<ion-list>
+  <ion-item-sliding *ngFor="let data of donne">
+    <ion-item>
+      <ion-label>
+        <h2>{{data.Nom}}</h2>
+        <h3>Stock dispo: {{data.Qte}}, Prix: {{data.Prix}}</h3>
+      </ion-label>
+    </ion-item>
+
+    <ion-item-options side="end" class='options-left'>
+      <ion-item-option color="primary" (click)="detailproduit(data.pid)">
+        <ion-icon name="eye"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="warning" (click)="editproduit(data)">
+        <ion-icon name="create"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="danger"  (click)="supprimeproduit(data.pid)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+</ion-content>
